@@ -386,12 +386,9 @@ const music = document.getElementById('bg-music');
 const btn = document.getElementById('sound-btn');
 
 btn.addEventListener('click', () => {
-  music.volume = 0.06;
-  music.play().then(() => {
-    btn.style.display = 'none';
-  }).catch(err => {
-    console.log('Erro ao tocar:', err);
-  });
+  music.volume = 0.1;   // NÃO ZERO
+  music.currentTime = 0;
+  music.play();
 });
   }
 
@@ -403,4 +400,5 @@ btn.addEventListener('click', () => {
 </body>
 
 </html>
+
 
