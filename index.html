@@ -190,6 +190,18 @@
   opacity: 0.6;
   cursor: pointer;
 }
+	  .sound-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: none;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: white;
+  padding: 8px 14px;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  opacity: 0.6;
+}
 .section-image {
   position: relative;
   min-height: 100vh;
@@ -235,6 +247,9 @@
 <audio id="bg-music" loop preload="auto">
   <source src="audio/verso-oposto-ambient.mp3" type="audio/mpeg">
 </audio>
+	<button id="sound-btn" class="sound-btn">
+  ativar som
+</button>
 
 <div class="global-bg"></div>
 <div class="noise"></div>
@@ -367,31 +382,16 @@
   </footer>
 
   <script>
-    const reveals = document.querySelectorAll('.reveal');
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.2 });
-
-    reveals.forEach(el => observer.observe(el));
-  </script>
-<script>
 const music = document.getElementById('bg-music');
-music.volume = 0;
+const btn = document.getElementById('sound-btn');
 
-document.getElementById('sound-trigger').addEventListener('click', () => {
-  music.play();
-
-  let v = 0;
-  const fade = setInterval(() => {
-    v += 0.004;
-    music.volume = Math.min(v, 0.06);
-    if (v >= 0.06) clearInterval(fade);
-  }, 200);
+btn.addEventListener('click', () => {
+  music.volume = 0.06;
+  music.play().then(() => {
+    btn.style.display = 'none';
+  }).catch(err => {
+    console.log('Erro ao tocar:', err);
+  });
 });
   }
 
@@ -403,3 +403,4 @@ document.getElementById('sound-trigger').addEventListener('click', () => {
 </body>
 
 </html>
+
