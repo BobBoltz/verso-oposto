@@ -1,128 +1,122 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Verso Oposto</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Verso Oposto — uma experiência emocional entre o silêncio e o grito." />
+<meta charset="UTF-8" />
+<title>Verso Oposto</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Verso Oposto — uma experiência emocional entre o silêncio e o grito." />
 
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html {
-      scroll-behavior: smooth;
-      background: #0a0a0a;
-      color: #e8e4e0;
-      font-family: system-ui, -apple-system, sans-serif;
-    }
+html {
+  scroll-behavior: smooth;
+  background: #0a0a0a;
+  color: #e8e4e0;
+  font-family: system-ui, -apple-system, sans-serif;
+}
 
-    body { overflow-x: hidden; }
+body { overflow-x: hidden; }
 
-    section {
-      min-height: 100vh;
-      padding: 12rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
+section {
+  min-height: 100vh;
+  padding: 12rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
 
-    .container {
-      max-width: 900px;
-      width: 100%;
-      text-align: center;
-    }
+.container {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+}
 
-    h1 {
-      font-size: clamp(4rem, 10vw, 7rem);
-      font-weight: 200;
-      letter-spacing: 0.3em;
-    }
+h1 {
+  font-size: clamp(4rem, 10vw, 7rem);
+  font-weight: 200;
+  letter-spacing: 0.3em;
+}
 
-    h2 {
-      font-size: clamp(3rem, 7vw, 5rem);
-      font-weight: 200;
-      margin-bottom: 2rem;
-      letter-spacing: 0.1em;
-    }
+h2 {
+  font-size: clamp(3rem, 7vw, 5rem);
+  font-weight: 200;
+  margin-bottom: 2rem;
+  letter-spacing: 0.1em;
+}
 
-    p {
-      font-family: Georgia, serif;
-      font-size: clamp(1.25rem, 2.8vw, 1.6rem);
-      line-height: 1.8;
-      opacity: 0.8;
-      margin-bottom: 1.5rem;
-    }
+p {
+  font-family: Georgia, serif;
+  font-size: clamp(1.25rem, 2.8vw, 1.6rem);
+  line-height: 1.8;
+  opacity: 0.85;
+  margin-bottom: 1.5rem;
+}
 
-    .mantra {
-      opacity: 0.6;
-      margin-top: 4rem;
-    }
+.mantra {
+  opacity: 0.6;
+  margin-top: 4rem;
+}
 
-    .divider {
-      width: 100px;
-      height: 2px;
-      background: rgba(90, 15, 15, 0.7);
-      margin: 3rem auto;
-    }
+.divider {
+  width: 100px;
+  height: 2px;
+  background: rgba(90,15,15,0.7);
+  margin: 3rem auto;
+}
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 1.2s cubic-bezier(0.16,1,0.3,1);
-    }
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1.2s cubic-bezier(0.16,1,0.3,1);
+}
 
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    .keywords {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 3rem;
-      margin-top: 4rem;
-      text-align: left;
-    }
+.keywords {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 3rem;
+  margin-top: 4rem;
+  text-align: left;
+}
 
-    .keyword h3 {
-      font-weight: 300;
-      font-size: 1.8rem;
-      margin-bottom: 0.3rem;
-    }
+.keyword h3 {
+  font-weight: 300;
+  font-size: 1.8rem;
+}
 
-    .keyword span {
-      font-style: italic;
-      font-size: 0.9rem;
-      color: rgba(180,83,9,0.7);
-    }
+.keyword span {
+  font-style: italic;
+  font-size: 0.95rem;
+  color: rgba(180,83,9,0.7);
+}
 
-    .listen {
-      margin-top: 6rem;
-      letter-spacing: 0.4em;
-      font-size: 0.8rem;
-      opacity: 0.5;
-      cursor: pointer;
-      transition: opacity 0.4s;
-    }
+.listen {
+  margin-top: 6rem;
+  letter-spacing: 0.4em;
+  font-size: 0.85rem;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: opacity 0.4s;
+}
 
-    .listen:hover {
-      opacity: 0.9;
-    }
+.listen:hover { opacity: 1; }
 
-    footer {
-      padding: 4rem 1rem;
-      text-align: center;
-      font-size: 0.7rem;
-      opacity: 0.3;
-      letter-spacing: 0.3em;
-    }
+footer {
+  padding: 4rem 1rem;
+  text-align: center;
+  font-size: 0.7rem;
+  opacity: 0.3;
+  letter-spacing: 0.3em;
+}
 
-    ::selection {
-      background: rgba(180,83,9,0.3);
-    }
-	
-	.bg {
+/* BACKGROUNDS */
+.bg {
   position: absolute;
   inset: 0;
   background-size: cover;
@@ -138,76 +132,50 @@
   z-index: -1;
 }
 
+.global-bg {
+  position: fixed;
+  inset: 0;
+  background-image: url('images/ambient.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15;
+  filter: blur(2px) contrast(1.1);
+  z-index: -3;
+}
+
 .noise {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 9999;
-
-  background-image:
-    repeating-radial-gradient(
-      circle at 50% 50%,
-      rgba(255,255,255,0.03),
-      rgba(0,0,0,0.03) 1px
-    );
-
+  background-image: repeating-radial-gradient(
+    circle at 50% 50%,
+    rgba(255,255,255,0.03),
+    rgba(0,0,0,0.03) 1px
+  );
   mix-blend-mode: overlay;
-  opacity: 0.4;
+  opacity: 0.35;
   animation: grain 0.3s steps(2) infinite;
 }
 
-.global-bg {
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-
-  background-image: url('images/ambient.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  opacity: 0.15;
-  filter: blur(2px) contrast(1.1);
+@keyframes grain {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(-1%,1%); }
+  100% { transform: translate(0,0); }
 }
 
-.section-image {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-}
-
-.section-image .bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  z-index: -2;
-}
-
-.section-image .overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(10,10,10,0.7);
-  z-index: -1;
 .section-image.final .bg {
   background-size: contain;
   background-repeat: no-repeat;
-
-  /* 👇 isso agora FUNCIONA */
   background-position: center top;
   transform: translateY(10vh);
-
   opacity: 0.25;
-  filter: blur(0.5px);
 }
 
 .section-image.final .overlay {
   background: radial-gradient(circle, rgba(10,10,10,0.6) 0%, rgba(0,0,0,0.9) 70%);
-  font-size: clamp(1.6rem, 3.5vw, 2rem);
-  opacity: 0.9;
 }
-  </style>
+</style>
 </head>
 
 <body>
@@ -219,167 +187,109 @@
 <div class="global-bg"></div>
 <div class="noise"></div>
 
-
-  <!-- HERO -->
-
-  <section>
+<!-- HERO -->
+<section>
   <div class="bg" style="background-image:url('images/hero.jpg')"></div>
   <div class="overlay"></div>
-
   <div class="container reveal">
     <h1>VERSO</h1>
     <div class="divider"></div>
     <h2>OPOSTO</h2>
-
     <p class="mantra">
-      “Entre o silêncio e o grito,<br />
-      existe um verso que nos habita.”
+      “Entre o silêncio e o grito,<br>existe um verso que nos habita.”
     </p>
   </div>
 </section>
 
-<!-- BIO (texto puro) -->
+<!-- BIO -->
 <section>
   <div class="container reveal">
-    <p>
-      Não nascemos de um encontro planejado, mas de uma necessidade.  
-      A necessidade de transformar o que não conseguimos dizer em algo que pudesse ser ouvido.
-    </p>
-
-    <p>
-      Verso Oposto surgiu do confronto interno   
-      aquele espaço entre quem somos e quem fingimos ser.  
-      Entre a palavra engolida e o grito que escapa.
-    </p>
+    <p>Não nascemos de um encontro planejado, mas de uma necessidade.</p>
+    <p>Verso Oposto vive no espaço entre quem somos e quem fingimos ser.</p>
   </div>
 </section>
 
-<!-- SÃO PAULO (capítulo visual) -->
+<!-- SÃO PAULO -->
 <section>
   <div class="bg" style="background-image:url('images/city.jpg')"></div>
   <div class="overlay"></div>
-
   <div class="container reveal">
     <p>
-      Somos de São Paulo.<br>
-      Da cidade que nunca silencia por completo.<br><br>
-
-      Onde tudo acontece ao mesmo tempo<br>
-      e o excesso do lado de fora<br>
-      só amplifica o conflito de dentro.<br><br>
-
-      Da pressa que sufoca,<br>
-      do caos que aperta,<br>
-      do ruído constante que nos obriga a sentir<br>
-      e, se formos honestos,<br>
-      a não desviar.
+      Somos de São Paulo.<br><br>
+      Da pressa que sufoca.<br>
+      Do ruído que obriga a sentir.<br>
+      Do caos que amplifica o que dói por dentro.
     </p>
   </div>
 </section>
 
-<!-- MANTRA / FECHAMENTO -->
+<!-- TEMAS -->
 <section>
   <div class="container reveal">
-    <p class="mantra">
-      Existimos porque o silêncio não deu conta.
-    </p>
+    <h2>O que sentimos</h2>
+    <div class="keywords">
+      <div class="keyword"><h3>Contradição</h3><span>existir em dois extremos</span></div>
+      <div class="keyword"><h3>Vulnerabilidade</h3><span>coragem de se mostrar</span></div>
+      <div class="keyword"><h3>Silêncio</h3><span>o que grita sem som</span></div>
+      <div class="keyword"><h3>Explosão</h3><span>quando o dentro transborda</span></div>
+      <div class="keyword"><h3>Saudade</h3><span>do que nunca veio</span></div>
+      <div class="keyword"><h3>Resiliência</h3><span>a cicatriz que canta</span></div>
+    </div>
   </div>
 </section>
-  
 
-  <!-- TEMAS -->
-  <section>
-    <div class="container reveal">
-      <h2>O que sentimos</h2>
-
-      <div class="keywords">
-        <div class="keyword"><h3>Contradição</h3><span>ser dois em um só corpo</span></div>
-        <div class="keyword"><h3>Vulnerabilidade</h3><span>a coragem de expor a ferida</span></div>
-        <div class="keyword"><h3>Silêncio</h3><span>o que grita sem voz</span></div>
-        <div class="keyword"><h3>Explosão</h3><span>quando o dentro transborda</span></div>
-        <div class="keyword"><h3>Saudade</h3><span>do que nunca chegou</span></div>
-        <div class="keyword"><h3>Resiliência</h3><span>a cicatriz que canta</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SOM -->
-  
-  <section class="section-image sound">
+<!-- SOM -->
+<section>
   <div class="bg" style="background-image:url('images/sound.jpg')"></div>
   <div class="overlay"></div>
-
   <div class="container reveal">
-    <p>
-      Nosso som é o peso de carregar sentimentos  
-      que não cabem em palavras simples.
-    </p>
-
-    <p>
-      Não somos um gênero, somos uma tensão.  
-      Aquela que existe entre querer soltar  
-      e precisar segurar.
-    </p>
+    <p>Nosso som é tensão.</p>
+    <p>Entre segurar e deixar explodir.</p>
   </div>
 </section>
 
-  <!-- CONVITE -->
- <section class="section-image final">
+<!-- CONVITE -->
+<section class="section-image final">
   <div class="bg" style="background-image:url('images/logo-mark.jpg')"></div>
   <div class="overlay"></div>
-
   <div class="container reveal">
-    <p>
-      E você<br />
-      o que carrega em silêncio?
-    </p>
-
-    <div class="listen" onclick="window.open('https://open.spotify.com', '_blank')">
+    <p>E você —<br>o que carrega em silêncio?</p>
+    <div class="listen" onclick="window.open('https://open.spotify.com','_blank')">
       ESCUTE · SINTA · SEJA OPOSTO
     </div>
   </div>
 </section>
 
-  <footer>
-    VERSO OPOSTO © 2026
-  </footer>
+<footer>VERSO OPOSTO © 2026</footer>
 
-  <script>
-    const reveals = document.querySelectorAll('.reveal');
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.2 });
-
-    reveals.forEach(el => observer.observe(el));
-  </script>
 <script>
- const music = document.getElementById('bg-music');
-  music.volume = 0;
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+},{ threshold: 0.2 });
+reveals.forEach(el => observer.observe(el));
 
-  let started = false;
+const music = document.getElementById('bg-music');
+let started = false;
 
-  function startMusic() {
-    if (started) return;
-    started = true;
+function startMusic() {
+  if (started) return;
+  started = true;
+  music.volume = 0.02;
+  music.play().then(() => {
+    let v = 0.02;
+    const fade = setInterval(() => {
+      v += 0.003;
+      music.volume = Math.min(v, 0.05);
+      if (v >= 0.05) clearInterval(fade);
+    }, 200);
+  }).catch(()=>{});
+}
 
-    music.play().then(() => {
-      let v = 0;
-      const fade = setInterval(() => {
-        v += 0.003;
-        music.volume = Math.min(v, 0.045);
-        if (v >= 0.06) clearInterval(fade);
-      }, 200);
-    }).catch(() => {});
-  }
-
-  document.addEventListener('click', startMusic, { once: true });
-  document.addEventListener('scroll', startMusic, { once: true });
-  document.addEventListener('touchstart', startMusic, { once: true });
+document.addEventListener('click', startMusic, { once:true });
+document.addEventListener('touchstart', startMusic, { once:true });
 </script>
 
 </body>
