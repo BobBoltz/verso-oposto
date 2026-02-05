@@ -382,13 +382,12 @@
   </footer>
 
   <script>
-const music = document.getElementById('bg-music');
-const btn = document.getElementById('sound-btn');
+music.addEventListener('error', e => {
+  console.log('ERRO NO AUDIO', e);
+});
 
-btn.addEventListener('click', () => {
-  music.volume = 0.1;   // NÃO ZERO
-  music.currentTime = 0;
-  music.play();
+music.addEventListener('canplaythrough', () => {
+  console.log('AUDIO CARREGADO');
 });
   }
 
@@ -400,5 +399,6 @@ btn.addEventListener('click', () => {
 </body>
 
 </html>
+
 
 
