@@ -138,17 +138,6 @@
   z-index: -1;
 }
 
-@media (max-width: 768px) {
-  .noise {
-    opacity: 0.02;
-    mix-blend-mode: soft-light;
-  }
-
-  section::before {
-    opacity: 0.25;
-  }
-}
-	  
 .noise {
   position: fixed;
   inset: 0;
@@ -181,27 +170,6 @@
   filter: blur(2px) contrast(1.1);
 }
 
-.sound-trigger {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  opacity: 0.6;
-  cursor: pointer;
-}
-	  .sound-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: none;
-  border: 1px solid rgba(255,255,255,0.4);
-  color: white;
-  padding: 8px 14px;
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  opacity: 0.6;
-}
 .section-image {
   position: relative;
   min-height: 100vh;
@@ -247,18 +215,13 @@
 <audio id="bg-music" loop preload="auto">
   <source src="audio/verso-oposto-ambient.mp3" type="audio/mpeg">
 </audio>
-	<button id="sound-btn" class="sound-btn">
-  ativar som
-</button>
 
 <div class="global-bg"></div>
 <div class="noise"></div>
 
 
   <!-- HERO -->
-<div id="sound-trigger" class="sound-trigger">
-  toque para sentir
-</div>
+
   <section>
   <div class="bg" style="background-image:url('images/hero.jpg')"></div>
   <div class="overlay"></div>
@@ -382,13 +345,36 @@
   </footer>
 
   <script>
-music.addEventListener('error', e => {
-  console.log('ERRO NO AUDIO', e);
-});
+    const reveals = document.querySelectorAll('.reveal');
 
-music.addEventListener('canplaythrough', () => {
-  console.log('AUDIO CARREGADO');
-});
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    reveals.forEach(el => observer.observe(el));
+  </script>
+<script>
+ const music = document.getElementById('bg-music');
+  music.volume = 0;
+
+  let started = false;
+
+  function startMusic() {
+    if (started) return;
+    started = true;
+
+    music.play().then(() => {
+      let v = 0;
+      const fade = setInterval(() => {
+        v += 0.003;
+        music.volume = Math.min(v, 0.045);
+        if (v >= 0.06) clearInterval(fade);
+      }, 200);
+    }).catch(() => {});
   }
 
   document.addEventListener('click', startMusic, { once: true });
@@ -397,8 +383,4 @@ music.addEventListener('canplaythrough', () => {
 </script>
 
 </body>
-
 </html>
-
-
-
